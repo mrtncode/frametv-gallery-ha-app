@@ -26,6 +26,6 @@ map:
   - type: data # Persistente Daten
     read_only: false
 environment:
-  SECRET_KEY: "supersecretkey" # Flask Secret Key
-  FRAME_TV_DATA: "/data" # Pfad zu Uploads & DB im Container
+  SECRET_KEY: "supersecretkey"
+  FRAME_TV_DATA: "/data"
 image: ghcr.io/mrtncode/frametv-art-gallery
