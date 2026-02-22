@@ -1,0 +1,31 @@
+#TODO:
+# - persistent data test
+name: FrameTV Art Gallery
+version: "v1.0.1"
+slug: frametv-art-gallery
+description: Self-hosted gallery manager for Samsung The Frame TVs
+arch:
+  - amd64 # x86-64 Desktop/Server
+  - aarch64 # 64-bit ARM
+url: https://github.com/mrtncode/frametv-art-gallery
+startup: "services"
+boot: "auto"
+webui: "http://[HOST]:[PORT:8000]/"
+#ingress: true
+#ingress_port: 8000
+# Do ingress later -> Application needs adjustments to not using absoulte url routes ("/app") but relative ones ("app")
+
+host_network: false
+ports:
+  8000/tcp: 8000
+ports_description:
+  8000/tcp: "Web Interface"
+options: {}
+schema: {}
+map:
+  - type: data # Persistente Daten
+    read_only: false
+environment:
+  SECRET_KEY: "supersecretkey" # Flask Secret Key
+  FRAME_TV_DATA: "/data" # Pfad zu Uploads & DB im Container
+image: ghcr.io/mrtncode/frametv-art-gallery
