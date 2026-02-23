@@ -1,7 +1,7 @@
 #TODO:
 # - persistent data test
 name: FrameTV Art Gallery
-version: "v1.0.1"
+version: "v1.0.2"
 slug: frametv-art-gallery
 description: Self-hosted gallery manager for Samsung The Frame TVs
 arch:
