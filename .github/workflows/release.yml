@@ -23,10 +23,10 @@ jobs:
         echo "version=${{ github.event.release.tag_name }}" >> "$GITHUB_OUTPUT"
     - name: Set version and update release
       run: | 
-        jq '.version = "${{ steps.version.outputs.version }}"' config.json > config.json.tmp
-        mv config.json.tmp config.json
-        echo -e "## ${{ steps.version.outputs.version }}\n- Updated to version [\`${{ steps.version.outputs.version }}\`](https://github.com/mrtncode/frametv-art-gallery/releases/tag/${{ steps.version.outputs.version }})\n" | cat - CHANGELOG.md > CHANGELOG.md.tmp
-        mv CHANGELOG.md.tmp CHANGELOG.md
+        jq '.version = "${{ steps.version.outputs.version }}"' frametv-art-gallery/config.json > frametv-art-gallery/config.json.tmp
+        mv frametv-art-gallery/config.json.tmp frametv-art-gallery/config.json
+        echo -e "## ${{ steps.version.outputs.version }}\n- Updated to version [\`${{ steps.version.outputs.version }}\`](https://github.com/mrtncode/frametv-art-gallery/releases/tag/${{ steps.version.outputs.version }})\n" | cat - frametv-art-gallery/CHANGELOG.md > frametv-art-gallery/CHANGELOG.md.tmp
+        mv frametv-art-gallery/CHANGELOG.md.tmp frametv-art-gallery/CHANGELOG.md
     - uses: stefanzweifel/git-auto-commit-action@fc84150d7c7500bbbaedb7ec522588fcc41f4d4d
       with:
         commit_message: "v${{ steps.version.outputs.version }}"
