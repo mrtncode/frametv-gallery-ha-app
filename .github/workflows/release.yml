@@ -22,9 +22,9 @@ jobs:
       run: |
         echo "version=${{ github.event.release.tag_name }}" >> "$GITHUB_OUTPUT"
     - name: Set version and update release
-      run: | 
-        jq '.version = "${{ steps.version.outputs.version }}"' frametv-art-gallery/config.json > frametv-art-gallery/config.json.tmp
-        mv frametv-art-gallery/config.json.tmp frametv-art-gallery/config.json
+      run: |
+        yq eval '.version = "${{ steps.version.outputs.version }}"' frametv-art-gallery/config.yaml > frametv-art-gallery/config.yaml.tmp
+        mv frametv-art-gallery/config.yaml.tmp frametv-art-gallery/config.yaml
         echo -e "## ${{ steps.version.outputs.version }}\n- Updated to version [\`${{ steps.version.outputs.version }}\`](https://github.com/mrtncode/frametv-art-gallery/releases/tag/${{ steps.version.outputs.version }})\n" | cat - frametv-art-gallery/CHANGELOG.md > frametv-art-gallery/CHANGELOG.md.tmp
         mv frametv-art-gallery/CHANGELOG.md.tmp frametv-art-gallery/CHANGELOG.md
     - uses: stefanzweifel/git-auto-commit-action@fc84150d7c7500bbbaedb7ec522588fcc41f4d4d
